@@ -1,0 +1,24 @@
+---
+- hosts: all
+  gather_facts: no
+  no_log: false
+
+  pre_tasks:
+
+  vars:
+       acs_output:
+       res: acs_output
+
+  tasks:
+  - name: status acs
+    include_role:
+      name: acs
+    vars:
+     action : "acs_status"
+
+
+  - name: Display acs_status
+    debug:
+      msg:
+       - "{{res}}"
+
